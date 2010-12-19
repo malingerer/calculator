@@ -3,6 +3,6 @@
 	 <dimen name="padding">10dp</dimen>
 	 <dimen name="entry_height">60dp</dimen>
 	 <dimen name="btn_height">60dp</dimen>
-	 <dimen name="btn_width">77dp</dimen>
-	  <dimen name="btn_equal_width">154dp</dimen>
+	 <dimen name="btn_width">75dp</dimen>
+	  <dimen name="btn_equal_width">150dp</dimen>
 </resources>
