@@ -3,9 +3,16 @@
                 android:layout_width="fill_parent" 
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding" >
-<EditText android:id="@id/entry" 
+<TextView android:id="@id/entry" 
+		  style="@style/CustomText"
           android:layout_width="fill_parent" 
+          android:layout_marginLeft="@dimen/entry_margin"
+          android:layout_marginRight="@dimen/entry_margin"
+          android:layout_marginBottom="@dimen/entry_margin"
           android:layout_height="@dimen/entry_height" 
+          android:text=""
+          android:gravity="right"
+          android:singleLine="true"
 		 />
 
 <Button android:id="@id/btn_ce"

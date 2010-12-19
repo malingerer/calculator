@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class CalculatorActivity extends Activity {
 	private static final String LOG_TAG = CalculatorActivity.class
@@ -18,7 +18,7 @@ public class CalculatorActivity extends Activity {
 	}
 
 	public void onPress(View v) {
-		EditText etext = (EditText) this.findViewById(R.id.entry);
+		TextView etext = (TextView) this.findViewById(R.id.entry);
 		switch (v.getId()) {
 		case R.id.btn_ce:
 			etext.setText(etext.getText() + "CE");
