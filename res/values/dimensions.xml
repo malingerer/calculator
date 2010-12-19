@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	 <dimen name="padding">5dp</dimen>
+	 <dimen name="ce_height">50dp</dimen>
+	 <dimen name="btn_9_width">77dp</dimen>
+	 <dimen name="btn_9_height">50dp</dimen>
+	  <dimen name="btn_8_width">77dp</dimen>
+	 <dimen name="btn_8_height">50dp</dimen>
+	  <dimen name="btn_7_width">77dp</dimen>
+	 <dimen name="btn_7_height">50dp</dimen>
+	  <dimen name="btn_6_width">77dp</dimen>
+	 <dimen name="btn_6_height">50dp</dimen>
+	  <dimen name="btn_5_width">77dp</dimen>
+	 <dimen name="btn_5_height">50dp</dimen>
+	  <dimen name="btn_4_width">77dp</dimen>
+	 <dimen name="btn_4_height">50dp</dimen>
+	  <dimen name="btn_3_width">77dp</dimen>
+	 <dimen name="btn_3_height">50dp</dimen>
+	  <dimen name="btn_2_width">77dp</dimen>
+	 <dimen name="btn_2_height">50dp</dimen>
+	  <dimen name="btn_1_width">77dp</dimen>
+	 <dimen name="btn_1_height">50dp</dimen>
+	  <dimen name="btn_0_width">77dp</dimen>
+	 <dimen name="btn_0_height">50dp</dimen>
+	  <dimen name="btn_minus_width">77dp</dimen>
+	 <dimen name="btn_minus_height">50dp</dimen>
+	  <dimen name="btn_plus_width">77dp</dimen>
+	 <dimen name="btn_plus_height">50dp</dimen>
+	  <dimen name="btn_div_width">77dp</dimen>
+	 <dimen name="btn_div_height">50dp</dimen>
+	  <dimen name="btn_mult_width">77dp</dimen>
+	 <dimen name="btn_mult_height">50dp</dimen>
+	  <dimen name="btn_equal_width">154dp</dimen>
+	 <dimen name="btn_equal_height">50dp</dimen>
+</resources>
