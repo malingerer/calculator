@@ -5,12 +5,12 @@
                 android:padding="@dimen/padding" >
 <EditText android:id="@id/entry" 
           android:layout_width="fill_parent" 
-          android:layout_height="wrap_content" 
+          android:layout_height="@dimen/entry_height" 
 		 />
 
 <Button android:id="@id/btn_ce"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="@dimen/btn_ce_height"
 		android:text = "@string/btn_ce"
 	 	android:layout_below="@id/entry" 
 		android:onClick = "onPress"
