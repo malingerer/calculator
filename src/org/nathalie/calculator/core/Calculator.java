@@ -1,5 +1,7 @@
 package org.nathalie.calculator.core;
 
+import java.text.DecimalFormat;
+
 import org.nathalie.calculator.CalculatorActivity;
 import org.nathalie.calculator.R;
 
@@ -25,6 +27,7 @@ public class Calculator {
 	private boolean mult = false;
 	private boolean div = false;
 	private boolean equal = false;
+	
 	
 	public Calculator() {
 		number = new StringBuffer();
@@ -71,8 +74,7 @@ public class Calculator {
 				clear();
 				break;
 			case R.id.btn_0:
-				etext.setText(etext.getText() + "0");
-				number.append("0");
+				checkOneMoreZero();
 				break;
 			case R.id.btn_1:
 				etext.setText(etext.getText() + "1");
@@ -131,11 +133,25 @@ public class Calculator {
 			case R.id.btn_equal:
 				saveOpearation();
 				double res = calc();
-				etext.setText(String.valueOf(res));
+				DecimalFormat outRes = new DecimalFormat("0");
+				etext.setText(outRes.format(res));
 				clearResult();
 				break;
 		}
 	}
+	
+	private void checkOneMoreZero()
+	{
+		if (number.length() != 0 && Double.parseDouble(number.toString()) == 0)
+		{
+			etext.setText("0");
+		}
+		else{
+			etext.setText(etext.getText() + "0");
+			number.append("0");
+		}
+	}
+	
 	private void logicCalc(double x, double y)	
 	{
 		if (plus)
