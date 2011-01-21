@@ -105,30 +105,20 @@ public class Calculator {
 				setOutputText("9");			
 				break;
 			case R.id.btn_minus:
-				clear();
-				saveOpearation();
-				update();
+				checkCorrectOperationPress();
 				break;
 			case R.id.btn_plus:
-				saveOpearation();
-				update();	
+				checkCorrectOperationPress();	
 				break;
 			case R.id.btn_mult:
-				saveOpearation();
-				update();
-				
+				checkCorrectOperationPress();
 				break;
 			case R.id.btn_div:
-				saveOpearation();
-				update();
-				
+				checkCorrectOperationPress();
 				break;
 			case R.id.btn_equal:
-				saveOpearation();
-				double res = calc();
-				DecimalFormat outRes = new DecimalFormat("0");
-				etext.setText(outRes.format(res));
-				clearResult();
+				checkCorrectEqualPress();
+				
 				break;
 		}
 	}
@@ -142,9 +132,7 @@ public class Calculator {
 			
 			result = 0;
 			logicCalc(x, y);
-		}
-		
-		
+		}	
 		
 		return result;
 	}
@@ -174,7 +162,34 @@ public class Calculator {
 		div = false;
 		equal = false;
 	}
-
+	private void checkCorrectEqualPress()
+	{
+		if (number.length() == 0 )
+		{
+			clear();
+		}
+		else
+		{
+			saveOpearation();
+			double res = calc();
+			DecimalFormat outRes = new DecimalFormat("0");
+			etext.setText(outRes.format(res));
+			clearResult();
+		}
+	}
+	private void checkCorrectOperationPress()
+	{
+		if (number.length() != 0)
+		{
+			saveOpearation();
+			update();
+		}
+		else
+		{
+			update();
+		}
+		
+	}
 	private void setOutputText(String text)
 	{
 		if (tmp != null)
