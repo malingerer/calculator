@@ -1,5 +1,8 @@
 package org.nathalie.calculator;
 
+import org.nathalie.calculator.core.Calculator;
+
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,30 +13,25 @@ public class CalculatorActivity extends Activity {
 	private static final String LOG_TAG = CalculatorActivity.class
 			.getSimpleName();
 
+	private Calculator calc;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.test);
+		calc = new Calculator();
 	}
-	
-	private String str = "";
-	
-	private boolean plus = false;
-	private boolean minus = false;
-	private boolean mult = false;
-	private boolean div = false;
-	private boolean equal = false;
-	
-	private double number = 0;
-	private double tmp = 0;
-	private double result;
+
 
 	public void onPress(View v) {
 		TextView etext = (TextView) this.findViewById(R.id.entry);
-		//String number = "";
-		double result = 0.0;
-		switch (v.getId()) {
+		
+		calc.init(v, etext);
+		calc.input();
+		
+		
+	/*	switch (v.getId()) {
 		case R.id.btn_ce:
 			CleanInput(etext);
 			break;
@@ -84,6 +82,7 @@ public class CalculatorActivity extends Activity {
 		case R.id.btn_plus:
 			result = Calc(str, '+');
 			str = "";
+			etext.setText("");
 			System.out.println(result);
 			break;
 		case R.id.btn_mult:
@@ -99,13 +98,12 @@ public class CalculatorActivity extends Activity {
 			result = Calc(str, '=');	
 			etext.setText(String.valueOf(result));	
 			break;
-		}
+		}*/ 
 
 		Log.d(LOG_TAG, "button " + v + " clicked");
 
 	}
-	
-	public void CleanInput(TextView tv){
+	/*public void CleanInput(TextView tv){
 		tv.setText("");
 	}
 	
@@ -114,27 +112,7 @@ public class CalculatorActivity extends Activity {
 		this.number = Double.parseDouble(number);
 	}
 	
-	public void saveOpearation(char operation)
-	{
-		switch (operation)
-		{
-		case '+':
-			plus = true;
-			break;
-		case '-':
-			minus = true;
-			break;
-		case '*':
-			mult = true;
-			break;
-		case '/':
-			div = true;
-			break;
-		case '=':
-			equal = true;
-			break;
-		}
-	}
+	
 	public void InnerCalc()
 	{
 		if (plus)
@@ -210,5 +188,5 @@ public class CalculatorActivity extends Activity {
 		}
 		
 		
-	}
+	}*/
 }

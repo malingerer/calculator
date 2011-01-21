@@ -1,4 +1,5 @@
-package org.nathalie.calculator;
+package org.nathalie.calculator.core;
+
 
 class SubtractionOperation implements Operation {
 	
