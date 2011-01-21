@@ -29,6 +29,7 @@ public class Calculator {
 	private boolean equal = false;
 	
 	
+	
 	public Calculator() {
 		number = new StringBuffer();
 	}
@@ -77,42 +78,34 @@ public class Calculator {
 				checkOneMoreZero();
 				break;
 			case R.id.btn_1:
-				etext.setText(etext.getText() + "1");
-				number.append("1");
+				setOutputText("1");	
 				break;
 			case R.id.btn_2:
-				etext.setText(etext.getText() + "2");
-				number.append("2");
+				setOutputText("2");	
 				break;
 			case R.id.btn_3:
-				etext.setText(etext.getText() + "3");
-				number.append("3");
+				setOutputText("3");	
 				break;
 			case R.id.btn_4:
-				etext.setText(etext.getText() + "4");
-				number.append("4");
+				setOutputText("4");	
 				break;
 			case R.id.btn_5: 
-				etext.setText(etext.getText() + "5");
-				number.append("5");
+				setOutputText("5");	
 				break;
 			case R.id.btn_6:
-				etext.setText(etext.getText() + "6");
-				number.append("6");
+				setOutputText("6");	
 				break;
 			case R.id.btn_7:
-				etext.setText(etext.getText() + "7");
-				number.append("7");
+				setOutputText("7");	
 				break;
 			case R.id.btn_8:
-				etext.setText(etext.getText() + "8");
-				number.append("8");
+				setOutputText("8");	
 				break;
 			case R.id.btn_9:
-				etext.setText(etext.getText() + "9");
-				number.append("9");
+				setOutputText("9");			
 				break;
 			case R.id.btn_minus:
+				clear();
 				saveOpearation();
 				update();
 				break;
@@ -138,6 +131,63 @@ public class Calculator {
 				clearResult();
 				break;
 		}
+	}
+	
+	public double calc()
+	{
+		if (equal)
+		{
+			double y = Double.parseDouble(number.toString());
+			double x = tmp;
+			
+			result = 0;
+			logicCalc(x, y);
+		}
+		
+		
+		
+		return result;
+	}
+	
+	
+	public void clear(){
+		etext.setText("");	
+	}
+	
+	public void update()
+	{
+		clear();
+		
+		etext.setText(number.toString());
+		number.delete(0, number.length());
+		
+	}
+	
+	public void clearResult()
+	{
+		result = 0;
+		tmp = null;
+		number.delete(0, number.length());
+		plus = false;
+		minus = false;
+		mult = false;
+		div = false;
+		equal = false;
+	}
+
+	private void setOutputText(String text)
+	{
+		if (tmp != null)
+		{
+			etext.setText(text);
+			number.append(text);
+		}
+		else
+		{
+			etext.setText(etext.getText() + text);
+			number.append(text);
+		}
+		
 	}
 	
 	private void checkOneMoreZero()
@@ -186,46 +236,6 @@ public class Calculator {
 						Log.d(LOG_TAG, "Division by zero");
 					}
 		}
-	}
-	
-	public double calc()
-	{
-		if (equal)
-		{
-			double y = Double.parseDouble(number.toString());
-			double x = tmp;
-			
-			result = 0;
-			logicCalc(x, y);
-		}
-		
-		
-		
-		return result;
-	}
-	
-	
-	public void clear(){
-		etext.setText("");	
-	}
-	
-	public void update()
-	{
-		clear();
-		etext.setText(number.toString());
-		number.delete(0, number.length());
-	}
-	
-	public void clearResult()
-	{
-		result = 0;
-		tmp = null;
-		number.delete(0, number.length());
-		plus = false;
-		minus = false;
-		mult = false;
-		div = false;
-		equal = false;
 	}
 
 }
