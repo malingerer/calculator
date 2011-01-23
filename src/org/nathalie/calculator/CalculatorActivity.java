@@ -1,7 +1,9 @@
 package org.nathalie.calculator;
 
 import org.nathalie.calculator.core.Calculator;
-
+import org.nathalie.calculator.model.Calc;
+import org.nathalie.calculator.model.CalcCommand;
+import org.nathalie.calculator.model.CalcListener;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,183 +12,87 @@ import android.view.View;
 import android.widget.TextView;
 
 public class CalculatorActivity extends Activity {
-	private static final String LOG_TAG = CalculatorActivity.class
-			.getSimpleName();
+	private static final String LOG_TAG = CalculatorActivity.class.getSimpleName();
 
-	private Calculator calc;
-	
+	private Calc c;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.test);
-		calc = new Calculator();
-	}
+		new Calculator();
 
+		c = new Calc();
+		c.setCalcListener(new CalcListener() {
+
+			public void onResultChanged(Calc calc) {
+				((TextView) findViewById(R.id.entry)).setText(String.valueOf((int) calc.getResult()));
+			}
+
+			public void onErrorOccured(Calc calc) {
+				((TextView) findViewById(R.id.entry)).setText("ERROR");
+			}
+
+			public void onErrorCleaned(Calc calc) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+	}
 
 	public void onPress(View v) {
-		TextView etext = (TextView) this.findViewById(R.id.entry);
-		
-		calc.init(v, etext);
-		calc.input();
-		
-		
-	/*	switch (v.getId()) {
+		switch (v.getId()) {
 		case R.id.btn_ce:
-			CleanInput(etext);
+			c.input(CalcCommand.CLEAN);
 			break;
 		case R.id.btn_0:
-			etext.setText(etext.getText() + "0");
-			str += "0";
+			c.input(CalcCommand.DIGIT_ZERO);
 			break;
 		case R.id.btn_1:
-			etext.setText(etext.getText() + "1");
-			str += "1";
+			c.input(CalcCommand.DIGIT_ONE);
 			break;
 		case R.id.btn_2:
-			etext.setText(etext.getText() + "2");
-			str += "2";
+			c.input(CalcCommand.DIGIT_TWO);
 			break;
 		case R.id.btn_3:
-			etext.setText(etext.getText() + "3");
-			str += "3";
+			c.input(CalcCommand.DIGIT_THREE);
 			break;
 		case R.id.btn_4:
-			etext.setText(etext.getText() + "4");
-			str += "4";
+			c.input(CalcCommand.DIGIT_FOUR);
 			break;
 		case R.id.btn_5:
-			etext.setText(etext.getText() + "5");
-			str += "5";
+			c.input(CalcCommand.DIGIT_FIVE);
 			break;
 		case R.id.btn_6:
-			etext.setText(etext.getText() + "6");
-			str += "6";
+			c.input(CalcCommand.DIGIT_SIX);
 			break;
 		case R.id.btn_7:
-			etext.setText(etext.getText() + "7");
-			str += "7";
+			c.input(CalcCommand.DIGIT_SEVEN);
 			break;
 		case R.id.btn_8:
-			etext.setText(etext.getText() + "8");
-			str += "8";
+			c.input(CalcCommand.DIGIT_EIGHT);
 			break;
 		case R.id.btn_9:
-			etext.setText(etext.getText() + "9");
-			str += "9";
+			c.input(CalcCommand.DIGIT_NINE);
 			break;
 		case R.id.btn_minus:
-			result = Calc(str, '-');
-			str = "";	
+			c.input(CalcCommand.SUBSTRACTION);
 			break;
 		case R.id.btn_plus:
-			result = Calc(str, '+');
-			str = "";
-			etext.setText("");
-			System.out.println(result);
+			c.input(CalcCommand.ADDITION);
 			break;
 		case R.id.btn_mult:
-			result = Calc(str, '*');	
-			str = "";
+			c.input(CalcCommand.MULTIPLICATION);
 			break;
 		case R.id.btn_div:
-			result = Calc(str, '/');
-			str = "";
+			c.input(CalcCommand.DIVISION);
 			break;
 		case R.id.btn_equal:
-			etext.setText("");
-			result = Calc(str, '=');	
-			etext.setText(String.valueOf(result));	
+			c.input(CalcCommand.EQUAL);
 			break;
-		}*/ 
+		}
 
 		Log.d(LOG_TAG, "button " + v + " clicked");
-
 	}
-	/*public void CleanInput(TextView tv){
-		tv.setText("");
-	}
-	
-	public void saveNumber(String number)
-	{
-		this.number = Double.parseDouble(number);
-	}
-	
-	
-	public void InnerCalc()
-	{
-		if (plus)
-		{
-			AdditionOperation add = new AdditionOperation();
-			if (this.tmp != 0)
-			{
-				this.result = add.perform(this.tmp, this.number); 
-			}
-		}
-		
-		if (minus)
-		{
-			SubtractionOperation sub = new SubtractionOperation();
-			if (this.tmp != 0)
-			{
-				this.result = sub.perform(this.tmp, this.number);
-			}
-		}
-		
-		if (mult)
-		{
-			MultiplicationOperation multip = new MultiplicationOperation();
-			if (this.tmp != 0)
-			{
-				this.result = multip.perform(this.tmp, this.number);
-			}
-		}
-		
-		if (div)
-		{
-			try
-			{
-				DivisionOperation division = new DivisionOperation();
-				if (this.tmp != 0)
-				{
-					this.result = division.perform(this.tmp, this.number);
-				}
-			}
-			catch (IncorectOperationException ex)
-			{
-				System.out.println("Division by zero");
-			}
-		}
-	}
-	public double Calc (String number, char operation)
-	{
-		if (this.number != 0)
-		{
-			this.tmp = this.number;
-			saveNumber(number);
-			saveOpearation(operation);
-		}
-		else
-		{
-			saveNumber(number);
-			saveOpearation(operation);
-		}
-		
-		
-		
-		//InnerCalc();
-		
-		if (equal)
-		{
-			this.result = 0;
-			InnerCalc();
-			return this.result;
-		}
-		else
-		{
-			return this.result;
-		}
-		
-		
-	}*/
 }
