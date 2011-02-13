@@ -39,10 +39,13 @@ public final class Calc {
 		return operation;
 	}
 
-	void setOperation(Operation operation) {
+	void setOperation(Operation operation) {	
+		if (this.operation == null)
+		{
+			prevResult = currentResult;
+			currentResult = 0d;
+		}
 		this.operation = operation;
-		prevResult = currentResult;
-		currentResult = 0d;
 	}
 
 	public void input(CalcCommand command) {

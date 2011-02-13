@@ -11,7 +11,7 @@ class InputOperationCommand extends CalcCommand {
 
 	@Override
 	void exec(Calc calc) {
-		calc.setOperation(operation);
+			calc.setOperation(operation);
 	}
 
 }
