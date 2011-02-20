@@ -1,5 +1,6 @@
-#Sun Dec 19 17:42:14 EET 2010
+#Sun Feb 20 20:46:48 EET 2011
 eclipse.preferences.version=1
+formatter_profile=_Nathalie-Formatter
 formatter_settings_version=11
 org.eclipse.jdt.ui.exception.name=ex
 org.eclipse.jdt.ui.gettersetter.use.is=true
